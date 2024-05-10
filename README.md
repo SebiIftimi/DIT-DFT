@@ -18,7 +18,9 @@ This method is effective for computing the DFT for any size of data set. For exa
 
 # Computational Complexity 
 
-The standard formula for the DFT (Discrete Fourier Transform) has a computational complexity of O(n^2), where n is the number of points in the dataset. This means that the time required for the computation increases exponentially with the size of the dataset. For example, if the size of the dataset doubles, the computation time increases fourfold. This means that DFT is feasible for small datasets but becomes computationally expensive for large datasets.
+The standard formula for the DFT (Discrete Fourier Transform) has a computational complexity of ![Formula White](https://latex.codecogs.com/svg.image?\color{white}O(n^2)), where n is the number of points in the dataset. This means that the time required for the computation increases exponentially with the size of the dataset. For example, if the size of the dataset doubles, the computation time increases fourfold. This means that DFT is feasible for small datasets but becomes computationally expensive for large datasets.
+
+
 
 # Understanding the Decimation-In-Time FFT (DIT-FFT)
 
@@ -29,9 +31,9 @@ DIT-FFT employs a divide-and-conquer strategy that breaks down the complex probl
 
 # Data preprocessing
 
-To apply DIT-FFT, the dataset must first be preprocessed. The number of data points in the set needs to be a power of 2. If the number of data points in the set is not a power of 2, the data can either be truncated to the next lower power of 2 or padded with zeros to the next higher power of 2. Regardless of the duration NN of the original signal, according to the Archimedean property, there exists a natural number  L  such that 2^L < N <= 2^L+1.
-  - if N - 2^L < 2^L+1 - N,  then the sequence will be truncated, retaining only the first 2^L values.
-  - if N - 2^L >= 2^L+1 - N, then the sequence will be padded with zeros until its length equals 2^L+1.
+To apply DIT-FFT, the dataset must first be preprocessed. The number of data points in the set needs to be a power of 2. If the number of data points in the set is not a power of 2, the data can either be truncated to the next lower power of 2 or padded with zeros to the next higher power of 2. Regardless of the duration N of the original signal, according to the Archimedean property, there exists a natural number  L  such that ![Formula White](https://latex.codecogs.com/svg.image?\inline&space;\color{white}^{}2^L<N\leq&space;2^{L&plus;1}).
+  - If ![Formula White](https://latex.codecogs.com/svg.image?\inline&space;\color{white}N-2^L<2^{L&plus;1}-N), then the sequence will be truncated, retaining only the first ![Formula](https://latex.codecogs.com/svg.image?\inline&space;\color{white}2^L) values.
+  - if ![Formula White](https://latex.codecogs.com/svg.image?\inline&space;\color{white}N-2^L\geq&space;2^{L&plus;1}-N), then the sequence will be padded with zeros until its length equals ![Formula](https://latex.codecogs.com/svg.image?\inline&space;\color{white}2^{L&plus;1}).
 
 
 

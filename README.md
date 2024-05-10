@@ -20,7 +20,13 @@ This method is effective for computing the DFT for any size of data set. For exa
 
 The standard formula for the DFT (Discrete Fourier Transform) has a computational complexity of ![Formula White](https://latex.codecogs.com/svg.image?\color{white}O(n^2)), where n is the number of points in the dataset. This means that the time required for the computation increases exponentially with the size of the dataset. For example, if the size of the dataset doubles, the computation time increases fourfold. This means that DFT is feasible for small datasets but becomes computationally expensive for large datasets.
 
+## Complex exponential coefficients  $\{W_N^k\}\$
 
+The complex exponential multiplier factor has two very important properties, which are fundamental to the efficiency of DFT calculation:
+$\{W^*}\$ 
+- **Symmetry**: $\{W_N^{k(N-n)}}\$ = $\overline{W_N^{nk}\}\$
+
+- **Periodicity**: $\{W_N^{n}}\$ = $\{W_N^{n\pm N}}\$, $\{W_N^{k(N+n)}}\$ = $\{W_N^{kn}}\$
 
 # Understanding the Decimation-In-Time FFT (DIT-FFT)
 
@@ -29,21 +35,17 @@ DIT-FFT employs a divide-and-conquer strategy that breaks down the complex probl
   2. Butterfly Operations: These operations are used to efficiently compute the DFTs of the smaller sequences. They involve basic arithmetic operations—additions and subtractions—along with multiplications by twiddle factors (complex exponential coefficients).
   3. Recombination: The partial DFTs calculated in the butterfly steps are combined to produce the final DFT of the original sequence. This step aggregates the results of the preceding computations to reconstruct the full frequency spectrum.
 
+In simpler terms, the Decimation-In-Time (DIT) Discrete Fourier Transform (DFT) algorithm progressively splits the input data into equal halves, akin to a tree structure. Once the data has been completely separated, the elements on the last branch are calculated, and recursively, the remaining elements in the dataset are computed.
+
+Considering the symmetry and periodicity properties of the complex exponential coefficients, it is possible to compute the element X(k), as well as X(k+N), in the same step.
+
 # Data preprocessing
 
 To apply DIT-FFT, the dataset must first be preprocessed. The number of data points in the set needs to be a power of 2. If the number of data points in the set is not a power of 2, the data can either be truncated to the next lower power of 2 or padded with zeros to the next higher power of 2. Regardless of the duration N of the original signal, according to the Archimedean property, there exists a natural number  L  such that ![Formula White](https://latex.codecogs.com/svg.image?\inline&space;\color{white}^{}2^L<N\leq&space;2^{L&plus;1}).
   - If ![Formula White](https://latex.codecogs.com/svg.image?\inline&space;\color{white}N-2^L<2^{L&plus;1}-N), then the sequence will be truncated, retaining only the first ![Formula](https://latex.codecogs.com/svg.image?\inline&space;\color{white}2^L) values.
   - if ![Formula White](https://latex.codecogs.com/svg.image?\inline&space;\color{white}N-2^L\geq&space;2^{L&plus;1}-N), then the sequence will be padded with zeros until its length equals ![Formula](https://latex.codecogs.com/svg.image?\inline&space;\color{white}2^{L&plus;1}).
 
-
-## Complex exponential multiplier  $\{W_N^k\}\$
-
-The complex exponential multiplier factor has two very important properties, which are fundamental to the efficiency of DFT calculation:
-$\{W^*}\$ 
-- **Symmetry**: $\{W_N^{k(N-n)}}\$ = $\overline{W_N^{nk}\}\$
-
-- **Periodicity**: $\{W_N^{n}}\$ = $\{W_N^{n\pm N}}\$, $\{W_N^{k(N+n)}}\$ = $\{W_N^{kn}}\$
-
+The algorithm checks whether N (the length of the input vector) is a power of two. Why is it crucial for N to be a power of two rather than any even or odd number? If N is an odd number, it cannot be exactly divided by two, which means that the recursive calculation, treating the elements as combinations within the dataset, cannot be applied. If N is an even number that is not a power of two, by dividing the dataset into equal halves, a point will be reached where N becomes an odd number. Consequently, it cannot be exactly divided by two, and thus, the algorithm cannot be applied again.
   
 
 

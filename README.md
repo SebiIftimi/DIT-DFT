@@ -46,7 +46,11 @@ To apply DIT-FFT, the dataset must first be preprocessed. The number of data poi
   - if ![Formula White](https://latex.codecogs.com/svg.image?\inline&space;\color{white}N-2^L\geq&space;2^{L&plus;1}-N), then the sequence will be padded with zeros until its length equals ![Formula](https://latex.codecogs.com/svg.image?\inline&space;\color{white}2^{L&plus;1}).
 
 The algorithm checks whether N (the length of the input vector) is a power of two. Why is it crucial for N to be a power of two rather than any even or odd number? If N is an odd number, it cannot be exactly divided by two, which means that the recursive calculation, treating the elements as combinations within the dataset, cannot be applied. If N is an even number that is not a power of two, by dividing the dataset into equal halves, a point will be reached where N becomes an odd number. Consequently, it cannot be exactly divided by two, and thus, the algorithm cannot be applied again.
-  
+
+## Final results
+
+Ultimately, by applying the Decimation-In-Time (DIT) algorithm for computing the Discrete Fourier Transform (DFT), the computational effort is reduced from O(N²) to O(N log N). This represents a significant decrease in computational effort, making the algorithm, with some adjustments, suitable for real-life data processing.
+
 
 
 

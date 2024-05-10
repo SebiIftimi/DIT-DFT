@@ -36,6 +36,17 @@ To apply DIT-FFT, the dataset must first be preprocessed. The number of data poi
   - if ![Formula White](https://latex.codecogs.com/svg.image?\inline&space;\color{white}N-2^L\geq&space;2^{L&plus;1}-N), then the sequence will be padded with zeros until its length equals ![Formula](https://latex.codecogs.com/svg.image?\inline&space;\color{white}2^{L&plus;1}).
 
 
+## Complex exponential multiplier  $\{W_N^k\}\$
+
+The complex exponential multiplier factor has two very important properties, which are fundamental to the efficiency of DFT calculation:
+$\{W^*}\$ 
+- **Symmetry**: $\{W_N^{k(N-n)}}\$ = $\overline{W_N^{nk}\}\$
+
+- **Periodicity** 
+
+
+
+
 
 
 

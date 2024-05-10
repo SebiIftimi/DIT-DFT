@@ -42,7 +42,9 @@ The complex exponential multiplier factor has two very important properties, whi
 $\{W^*}\$ 
 - **Symmetry**: $\{W_N^{k(N-n)}}\$ = $\overline{W_N^{nk}\}\$
 
-- **Periodicity** 
+- **Periodicity**: $\{W_N^{n}}\$ = $\{W_N^{n\pm N}}\$, $\{W_N^{k(N+n)}}\$ = $\{W_N^{kn}}\$
+
+  
 
 
 
